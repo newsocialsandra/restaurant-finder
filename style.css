@@ -1,0 +1,169 @@
+:root {
+  --bg: #f0f2f5;
+  --surface: rgba(255, 255, 255, 0.7);
+  --primary: linear-gradient(135deg, #5b8cff, #8b5bff);
+  --text: #222;
+  --muted: #555;
+  --shadow: 0 8px 24px rgba(0,0,0,.12);
+  --blur: blur(10px);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.site-header {
+  text-align: center;
+  padding: 32px 20px;
+  background: #5b8cff;
+  color: white;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.site-header h1 {
+  margin: 0 0 8px;
+  font-size: 2.4rem;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #e8f0ff;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.controls input, .controls select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface);
+  backdrop-filter: var(--blur);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  transition: transform .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.area {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.desc {
+  font-size: 14px;
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+
+.vote-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.vote-btn:hover {
+  opacity: 0.9;
+}
+
+.vote-count {
+  background: rgba(91,140,255,0.1);
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.add-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: var(--blur);
+}
+
+.add-form h2 {
+  margin-top: 0;
+}
+
+.add-form label {
+  display: block;
+  margin: 10px 0;
+}
+
+.add-form input, .add-form textarea, .add-form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn.primary {
+  background: #5b8cff;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn.primary:hover {
+  background: #4775d1;
+}
+
+.site-footer {
+  text-align: center;
+  margin: 40px 0;
+  color: var(--muted);
+}
