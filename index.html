@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -8,93 +8,80 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5HFKFH7D');</script>
 <!-- End Google Tag Manager -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stockholm Food Guide</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Stockholms vego-guide</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HFKFH7D"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 <header class="site-header">
-<h1>🍴 Stockholm Food Guide</h1>
-<p class="tagline">Discover the best cafés, restaurants & street food in Stockholm</p>
-</header>
-
-<section class="controls">
-  <input type="search" id="search" placeholder="Find food in Stockholm…">
-  <select id="categoryFilter">
-    <option value="all">All categories</option>
-    <option value="Fika">Fika Spots ☕</option>
-    <option value="Restaurant">Restaurants 🍽️</option>
-    <option value="Street Food">Street Food 🌮</option>
-  </select>
-  <select id="areaFilter">
-    <option value="all">All areas</option>
-    <option value="Kungsgatan">Kungsgatan</option>
-    <option value="Östermalm">Östermalm</option>
-    <option value="Södermalm">Södermalm</option>
-    <option value="Djurgården">Djurgården</option>
-    <option value="Hornstull">Hornstull</option>
-    <option value="Norrmalm">Norrmalm</option>
-    <option value="Slussen">Slussen</option>
-  </select>
-</section>
-
-<main>
-<h2>All Food Places</h2>
-<div class="card-grid" id="cards"></div>
-</main>
-
-<section class="add-form">
-<h2>Add Your Favorite Place</h2>
-<form id="addForm">
-<label>
-        Name:
-<input type="text" id="placeName" required>
-</label>
-<label>
-        Category:
-<select id="placeCategory" required>
-<option value="Fika">Fika</option>
-<option value="Restaurant">Restaurant</option>
-<option value="Street Food">Street Food</option>
-</select>
-</label>
-<label>
-        Area:
-<input type="text" id="placeArea" required>
-</label>
-<label>
-        Short description:
-<textarea id="placeDesc" required></textarea>
-</label>
-<button type="submit" class="btn primary">Submit</button>
-</form>
-</section>
-
-<footer class="site-footer">
-<p>Made with ❤️ in Stockholm</p>
-</footer>
-
-<!-- Template for cards -->
-<template id="cardTemplate">
-  <div class="card glass">
-    <div class="content">
-      <h3 class="title"></h3>
-      <p class="area"></p>
-      <p class="desc"></p>
-    <div class="rating">
-  <span class="vote-count"><span class="votes"></span> votes</span>
-  <button class="btn vote-btn">Vote</button>
-</div>
+  <div class="header-content">
+    <div class="header-title">
+      <h1>Stockholms vego-guide</h1>
+      <p class="tagline">Välj bland Stockholms bästa veganska och vegetariska restauranger!</p>
     </div>
+    <nav>
+      <a href="vegan.html" class="vegan-link">Nyfiken på att bli vegan?</a>
+    </nav>
   </div>
-</template>
-
-<!-- Script at very end -->
-<script src="app.js"></script>
+</header>
+  <main>
+    <!-- Hero Vegan Food Image -->
+    <img class="hero-img" src="https://images.unsplash.com/photo-1662116663474-818918884104?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Vegansk mat från Unsplash">
+    <section class="controls">
+      <input type="text" id="search" placeholder="Sök ställe eller område...">
+      <select id="categoryFilter">
+        <option value="all">Alla typer</option>
+        <option value="Vegansk">Vegansk</option>
+        <option value="Vegetarisk">Vegetarisk</option>
+      </select>
+      <select id="areaFilter">
+        <option value="all">Alla områden</option>
+        <option value="Södermalm">Södermalm</option>
+        <option value="Hornstull">Hornstull</option>
+        <option value="Kungsholmen">Kungsholmen</option>
+        <option value="Odenplan">Odenplan</option>
+        <option value="Norrmalm">Norrmalm</option>
+        <option value="Vasastan">Vasastan</option>
+      </select>
+    </section>
+    <section>
+      <div id="cards" class="card-grid"></div>
+      <template id="cardTemplate">
+        <div class="card">
+          <h3 class="title"></h3>
+          <div class="area"></div>
+          <div class="desc"></div>
+          <div class="rating">
+            <button class="like-btn" title="Like">❤️</button>
+            <span class="likes-bubble"></span>
+          </div>
+        </div>
+      </template>
+    </section>
+    <form id="addForm" class="add-form">
+      <h2>Lägg till ett nytt ställe</h2>
+      <label>Namn <input id="placeName" required></label>
+      <label>Typ
+        <select id="placeCategory">
+          <option value="Vegansk">Vegansk</option>
+          <option value="Vegetarisk">Vegetarisk</option>
+        </select>
+      </label>
+      <label>Område <input id="placeArea" required></label>
+      <label>Beskrivning <textarea id="placeDesc" required></textarea></label>
+      <button class="btn primary" type="submit">Lägg till</button>
+    </form>
+  </main>
+  <footer class="site-footer">
+    <p>Byggd med kärlek till växtbaserad mat 🌱</p>
+  </footer>
+  <script src="app.js"></script>
 </body>
 </html>

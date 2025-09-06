@@ -1,34 +1,31 @@
 console.log("App loaded ✅");
 
-// Emoji mapper
+// Emoji-mappning för vegomat
 function getEmoji(category) {
   switch (category) {
-    case "Fika": return "☕";
-    case "Restaurant": return "🍽️";
-    case "Street Food": return "🌮";
+    case "Vegansk": return "🌱";
+    case "Vegetarisk": return "🥗";
     default: return "🍴";
   }
 }
 
-// Starter places
+// Uppdaterad lista med bara veganska/vegetariska restauranger
 const defaultPlaces = [
-  { name: "Vete-Katten", category: "Fika", area: "Kungsgatan", desc: "Classic Swedish pastries & cakes.", votes: 45 },
-  { name: "Café Saturnus", category: "Fika", area: "Östermalm", desc: "Famous for giant cinnamon buns.", votes: 38 },
-  { name: "Kaffebar", category: "Fika", area: "Södermalm", desc: "Cozy indie café, known from film 'Fucking Åmål'.", votes: 29 },
-
-  { name: "Pelikan", category: "Restaurant", area: "Södermalm", desc: "Traditional Swedish husmanskost.", votes: 50 },
-  { name: "Oaxen Slip", category: "Restaurant", area: "Djurgården", desc: "Modern Nordic cuisine in a relaxed atmosphere.", votes: 42 },
-  { name: "Växthuset", category: "Restaurant", area: "Hornstull", desc: "Creative vegan fine dining.", votes: 33 },
-  { name: "Frantzén", category: "Restaurant", area: "Norrmalm", desc: "Sweden’s only 3-star Michelin restaurant.", votes: 55 },
-  { name: "Meatballs for the People", category: "Restaurant", area: "Södermalm", desc: "Iconic Swedish meatballs with a modern twist.", votes: 47 },
-
-  { name: "Nystekt Strömming", category: "Street Food", area: "Slussen", desc: "Classic fried herring stand.", votes: 36 },
-  { name: "K25", category: "Street Food", area: "Kungsgatan", desc: "Food court with Asian, Mexican & more.", votes: 28 }
+  { name: "Hermans", category: "Vegansk", area: "Södermalm", desc: "Legendarisk vegansk buffé med magisk utsikt.", likes: 76 },
+  { name: "Växthuset", category: "Vegansk", area: "Hornstull", desc: "Kreativ vegansk fine dining i mysig miljö.", likes: 52 },
+  { name: "Mahalo", category: "Vegansk", area: "Vasastan", desc: "Färgstarka bowls, wraps & smoothiebowls.", likes: 41 },
+  { name: "Delivore", category: "Vegansk", area: "Södermalm", desc: "Fika, lunch och mys – allt 100% växtbaserat.", likes: 38 },
+  { name: "Chutney", category: "Vegetarisk", area: "Södermalm", desc: "Vegetarisk restaurang med många veganalternativ.", likes: 40 },
+  { name: "Chewie's Bar", category: "Vegansk", area: "Kungsholmen", desc: "Bar och restaurang med street food-style rätter.", likes: 15 },
+  { name: "Falafelbaren", category: "Vegansk", area: "Södermalm", desc: "Stockholms bästa falafel – helt vegansk!", likes: 34 },
+  { name: "La Piccola Nonna", category: "Vegansk", area: "Södermalm", desc: "Äkta italienska pizzor med vegansk ost.", likes: 21 },
+  { name: "Kalf & Hansen", category: "Vegetarisk", area: "Norrmalm", desc: "Nordisk snabbmat, vegetariskt & ofta veganskt.", likes: 29 },
+  { name: "Bastard Burgers", category: "Vegansk", area: "Odenplan", desc: "Fantastiska veganska burgare och shakes.", likes: 44 }
 ];
 
 let places = [...defaultPlaces];
 
-// DOM references
+// DOM-referenser
 const els = {
   grid: document.getElementById("cards"),
   search: document.getElementById("search"),
@@ -41,7 +38,7 @@ const els = {
   desc: document.getElementById("placeDesc")
 };
 
-// Render cards
+// Render-funktion
 function render() {
   let list = [...places];
   const q = els.search.value.toLowerCase();
@@ -61,27 +58,23 @@ function render() {
   if (area !== "all") {
     list = list.filter(x => x.area === area);
   }
-
   els.grid.innerHTML = "";
-  const tmpl = document.getElementById("cardTemplate");
 
+  const tmpl = document.getElementById("cardTemplate");
   if (list.length === 0) {
-    els.grid.innerHTML = "<p>No results found.</p>";
+    els.grid.innerHTML = "<div style='grid-column: 1/-1; text-align:center; color:#999;'>Inga resultat hittades.</div>";
     return;
   }
-
   for (const x of list) {
     const node = tmpl.content.cloneNode(true);
     node.querySelector(".title").textContent = `${getEmoji(x.category)} ${x.name}`;
     node.querySelector(".area").textContent = `${x.area} · ${x.category}`;
     node.querySelector(".desc").textContent = x.desc;
-    node.querySelector(".votes").textContent = x.votes;
-
-    node.querySelector(".vote-btn").addEventListener("click", () => {
-      x.votes++;
+    node.querySelector(".likes-bubble").textContent = `${x.likes} likes`;
+    node.querySelector(".like-btn").addEventListener("click", () => {
+      x.likes++;
       render();
     });
-
     els.grid.appendChild(node);
   }
 }
@@ -94,7 +87,7 @@ els.addForm.addEventListener("submit", e => {
     category: els.category.value,
     area: els.areaInput.value,
     desc: els.desc.value,
-    votes: 0
+    likes: 0
   };
   places.push(newPlace);
   render();
@@ -106,5 +99,5 @@ els.search.addEventListener("input", render);
 els.cat.addEventListener("change", render);
 els.area.addEventListener("change", render);
 
-// Run after DOM loaded
+// Prerendera efter DOM laddad
 window.addEventListener("DOMContentLoaded", render);

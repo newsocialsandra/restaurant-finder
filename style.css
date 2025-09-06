@@ -8,6 +8,7 @@
   --blur: blur(10px);
 }
 
+/* Bas */
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
@@ -15,17 +16,31 @@ body {
   color: var(--text);
 }
 
+/* Header - förbättrad layout */
 .site-header {
-  text-align: center;
-  padding: 32px 20px;
   background: #5b8cff;
   color: white;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
+  padding: 0 0 32px 0;
 }
 
-.site-header h1 {
-  margin: 0 0 8px;
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 0 20px;
+  gap: 32px;
+}
+
+.header-title {
+  text-align: left;
+}
+
+.header-title h1 {
+  margin: 0 0 8px 0;
   font-size: 2.4rem;
 }
 
@@ -33,8 +48,47 @@ body {
   margin: 0;
   font-size: 1.1rem;
   color: #e8f0ff;
+  text-align: left;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.vegan-link {
+  background: white;
+  color: #5b8cff;
+  padding: 12px 26px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 0 6px #0001;
+  border: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-left: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vegan-link:hover {
+  background: #e8f0ff;
+  color: #3b62ac;
+  box-shadow: 0 4px 16px #91bcff66;
+}
+
+/* Hero-image */
+.hero-img {
+  display: block;
+  margin: 30px auto 36px auto;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 26px;
+  box-shadow: 0 6px 40px #0001;
+}
+
+/* Filter-controls */
 .controls {
   display: flex;
   gap: 10px;
@@ -42,7 +96,6 @@ body {
   margin: 20px auto;
   padding: 0 20px;
 }
-
 .controls input, .controls select {
   flex: 1;
   padding: 12px;
@@ -50,12 +103,8 @@ body {
   border-radius: 12px;
 }
 
-main {
-  max-width: 1100px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
+/* Kortalistan */
+main { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -70,28 +119,11 @@ main {
   padding: 18px;
   transition: transform .2s ease;
 }
+.card:hover { transform: translateY(-4px); }
 
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.title {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.area {
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.desc {
-  font-size: 14px;
-  margin: 8px 0;
-  color: var(--muted);
-}
-
+.title { margin: 0; font-size: 18px; font-weight: 600; }
+.area { font-size: 14px; color: var(--muted); }
+.desc { font-size: 14px; margin: 8px 0; color: var(--muted); }
 .rating {
   display: flex;
   align-items: center;
@@ -99,30 +131,31 @@ main {
   margin-top: 10px;
 }
 
-
-.vote-btn {
+/* Like-knapp */
+.like-btn {
   background: var(--primary);
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 12px;
-  padding: 6px 12px;
+  padding: 7px 16px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: opacity 0.2s, background 0.2s;
 }
+.like-btn:hover { opacity: 0.9; background: linear-gradient(135deg, #67de7a, #4ec88e); }
 
-.vote-btn:hover {
-  opacity: 0.9;
-}
-
-.vote-count {
+/* Like-räknare */
+.likes {
   background: rgba(91,140,255,0.1);
   color: #333;
   padding: 4px 10px;
   border-radius: 12px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
+/* Add-form */
 .add-form {
   max-width: 600px;
   margin: 40px auto;
@@ -132,16 +165,8 @@ main {
   box-shadow: var(--shadow);
   backdrop-filter: var(--blur);
 }
-
-.add-form h2 {
-  margin-top: 0;
-}
-
-.add-form label {
-  display: block;
-  margin: 10px 0;
-}
-
+.add-form h2 { margin-top: 0; }
+.add-form label { display: block; margin: 10px 0; }
 .add-form input, .add-form textarea, .add-form select {
   width: 100%;
   padding: 8px;
@@ -149,6 +174,7 @@ main {
   border-radius: 8px;
 }
 
+/* Primär knapp */
 .btn.primary {
   background: #5b8cff;
   border: none;
@@ -157,13 +183,46 @@ main {
   border-radius: 8px;
   cursor: pointer;
 }
+.btn.primary:hover { background: #4775d1; }
 
-.btn.primary:hover {
-  background: #4775d1;
-}
-
+/* Footer */
 .site-footer {
   text-align: center;
   margin: 40px 0;
   color: var(--muted);
+}
+
+/* Back-link på vegan.html */
+.back-link {
+  display: inline-block;
+  background: #f0f2ff;
+  color: #3977d9;
+  padding: 8px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 36px;
+  margin-top: 18px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 0 3px #bbb2;
+}
+.back-link:hover {
+  background: #dbecff;
+  color: #0055a8;
+}
+
+/* --- Responsivitet för headern --- */
+@media (max-width: 750px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 24px 6vw 0 6vw;
+  }
+  .header-title, .tagline {
+    text-align: center;
+  }
+  nav {
+    justify-content: center;
+  }
 }
