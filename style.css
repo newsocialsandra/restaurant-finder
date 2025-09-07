@@ -78,6 +78,18 @@ nav {
   box-shadow: 0 4px 16px #91bcff66;
 }
 
+.happycow-link {
+  color: white;
+}
+.happycow-link:hover {
+  color: #e5f1fb;
+}
+
+.happycow-link:active {
+  color: #9fc5e8;
+}
+
+
 /* Hero-image */
 .hero-img {
   display: block;
